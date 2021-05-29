@@ -92,8 +92,8 @@ const useStyles = makeStyles((theme) => ({
       color: '#49C87D',
       textAlign: 'center',
       fontSize: '12px',
-      padding: '5px'
-
+      padding: '5px',
+      cursor: 'pointer'
   },
   customButton1: {
     background: '#00B449',
@@ -101,7 +101,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     fontSize: '15px',
     padding: '10px',
-    marginTop: '5px'
+    marginTop: '5px',
+    cursor: 'pointer'
     }
 }));
 

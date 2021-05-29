@@ -3,8 +3,27 @@ import React from 'react'
 import useStyles from './sytles'
 import memberPic from './../../../../../assets/images/member-pic.PNG'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import DetailCart from './../detailCart'
+import Drawer from '@material-ui/core/Drawer';
+import Button from '@material-ui/core/Button';
+import {useHistory} from 'react-router-dom'
+
 export default function Footer() {
     const classes = useStyles()
+    const history = useHistory()
+    const [state, setState] = React.useState({
+        right: false,
+      });
+    
+      const toggleDrawer = (anchor, open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+          return;
+        }
+        setState({ ...state, [anchor]: open });
+      };
+    const onChekout = () => {
+        history.push('/checkout')
+    }
     return (
         <div className={classes.root}>
             <div className={classes.customerSection}>
@@ -36,8 +55,11 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className={classes.checkoutInfo}>
-                    <Typography className={classes.customButton}>See Detail</Typography>
-                    <Typography className={classes.customButton1}>CHECK OUT</Typography>
+                    <Typography onClick={toggleDrawer('right', true)} className={classes.customButton}>See Detail</Typography>
+                    <Drawer anchor={'right'} open={state['right']} onClose={toggleDrawer('right', false)}>
+                        {DetailCart('right')}
+                    </Drawer>
+                    <Typography className={classes.customButton1} onClick={onChekout}>CHECK OUT</Typography>
                 </div>
             </div>
         </div>

@@ -8,11 +8,8 @@ const useStyles = makeStyles((theme) => ({
     width: '100vw',
     height: '100vh',
     display: 'flex',
-    flexDirection: 'column',
     background: '#F3F3F7',
-  },
-  category: {
-    display: 'flex'
+    justifyContent: 'space-between'
   }
 }));
 

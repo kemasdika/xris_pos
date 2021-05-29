@@ -7,8 +7,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import { Typography } from '@material-ui/core';
@@ -81,7 +79,7 @@ export default function Header() {
                     <ListItemIcon>
                         <ExitToAppIcon fontSize="small" />
                     </ListItemIcon>
-                    <ListItemText primary="Logout" />
+                    <ListItemText primary="Logout" classes={{primary:classes.listext}}/>
                     </StyledMenuItem>
                 </StyledMenu>
             </div>

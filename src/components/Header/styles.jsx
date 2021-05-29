@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  listext: {
+    fontSize: '1rem'
+  },
   button: {
       color: '#ffffff',
       fontSize: '10px'

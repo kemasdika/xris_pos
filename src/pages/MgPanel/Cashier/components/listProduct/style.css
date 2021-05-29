@@ -1,0 +1,12 @@
+.list {
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-x: scroll; 
+    position: relative;
+    display: flex;
+    background: #F3F3F7;
+  }
+  
+.list::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }

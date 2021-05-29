@@ -17,6 +17,7 @@ import Private from './Private'
 import NotFound from "../../pages/General/CommonNotFound";
 import Menu from './../../pages/MgPanel/Menu/index'
 import Cashier from '../../pages/MgPanel/Cashier/index'
+import Checkout from '../../pages/MgPanel/Checkout/index'
 // import {
 //   DashboardLayout,
 // } from "../../components";
@@ -35,6 +36,7 @@ export default function TheRouter() {
         <Route path={`/login`} component={Login} />
         <Route path={`/menu`} component={Menu} />
         <Route path={`/cashier`} component={Cashier} />
+        <Route path={`/checkout`} component={Checkout} />
         {/* <Private path={`/dashboard`}>
           <DashboardLayout history={history}>
             <Dashboard />
