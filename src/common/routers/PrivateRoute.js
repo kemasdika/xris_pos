@@ -28,20 +28,18 @@ export default function TheRouter() {
   let { path, url } = useRouteMatch();
   console.log("🚀 ~ file: PrivateRoute.js ~ line 47 ~ TheRouter ~ url", url)
   console.log("🚀 ~ file: PrivateRoute.js ~ line 47 ~ TheRouter ~ path", path)
-
+  // const isAuthenticate = localStorage.access_token
   return (
     <React.Fragment>
       <Switch>
         <Route exact path={`/`} render={() => <Redirect to={`/login`} />} />
-        <Route path={`/login`} component={Login} />
-        <Route path={`/menu`} component={Menu} />
+        <Route path={`/login`} component={Login} /> 
+        {/* <Route path={`/menu`}  component={Menu} />
         <Route path={`/cashier`} component={Cashier} />
-        <Route path={`/checkout`} component={Checkout} />
-        {/* <Private path={`/dashboard`}>
-          <DashboardLayout history={history}>
-            <Dashboard />
-          </DashboardLayout>
-        </Private> */}
+        <Route path={`/checkout`} component={Checkout} /> */}
+        <Private path={`/menu`} component={Menu}/>
+        <Private path={`/cashier`} component={Cashier}/>
+        <Private path={`/checkout`} component={Checkout}/>
         <Route component={NotFound} />
       </Switch>
     </React.Fragment>

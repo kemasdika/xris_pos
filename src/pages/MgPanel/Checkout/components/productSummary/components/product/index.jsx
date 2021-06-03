@@ -1,17 +1,18 @@
 import React from 'react'
 import useStyles from './styles'
-import productImg from './../../../../../../../assets/images/product.PNG'
 import { Divider, Typography } from '@material-ui/core'
-export default function ListProductSummary() {
+import {rupiah} from './../../../../../../../helpers/rupiahConverter'
+export default function ListProductSummary({data}) {
     const classes = useStyles()
+    const sumQty = data.Product.price*data.quantity
     return (
         <div>
             <div className={classes.root}> 
-                <img src={productImg} alt='product' width='70px' height='70px'></img>
-                <Typography className={classes.productTitle}>Shampo</Typography>
-                <Typography>100.000</Typography>
-                <Typography>x1</Typography>
-                <Typography>100.000</Typography>
+                <img src={data.Product.image_url} alt='product' width='70px' height='70px'></img>
+                <Typography className={classes.productTitle}>{data.Product.name}</Typography>
+                <Typography>{rupiah(data.Product.price)}</Typography>
+                <Typography>x{data.quantity}</Typography>
+                <Typography>{rupiah(sumQty)}</Typography>
             </div>
             <Divider></Divider>
         </div>

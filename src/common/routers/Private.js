@@ -11,7 +11,7 @@ import {
 // pages
 // import NotFound from "../../pages/General/CommonNotFound";
 
-function PrivateRoute({ children, auth, ...rest }) {
+function PrivateRoute({children, component: Components, auth, ...rest }) {
   // const isAuthenticated = getAccessLog('user_data');
   // const [authCheck, setAuthCheck] = useState(isAuthenticated?._key ? true : false);
   // const authentication = useSelector(state => state.authentication)
@@ -21,14 +21,14 @@ function PrivateRoute({ children, auth, ...rest }) {
   //   setAuthCheck(checkMoreData);
   // }, [authentication]);
 
-
+  const isAuthenticate = localStorage.getItem('access_token')
   return (
     <Route
       {...rest}
     >
       {children}
-      {/* { authCheck === true
-        ? children
+      {  isAuthenticate
+        ? <Components {...rest}/>
         : (
           < Redirect to={
             {
@@ -37,7 +37,7 @@ function PrivateRoute({ children, auth, ...rest }) {
             }
           }
           />
-        )} */}
+        )}
     </Route>
   )
 };

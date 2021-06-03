@@ -6,32 +6,37 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import useStyles from './styles'
-import productImg from './../../../../../../assets/images/product.PNG'
-
-export default function CardProduct() {
+import {useDispatch} from 'react-redux'
+import {addToCart} from './../../../../../../controllers/_actions/CartAction'
+import {rupiah} from './../../../../../../helpers/rupiahConverter'
+export default function CardProduct({data}) {
     const classes = useStyles()
+    const dispatch = useDispatch()
+    const handleToCart = () => {
+        dispatch(addToCart(data.id))
+    }
     return (
         <Card className={classes.root}>
           <CardMedia
             component="img"
             alt="Contemplative Reptile"
             height="140"
-            image={productImg}
+            image={data.image_url}
             title="Contemplative Reptile"
           />
           <CardContent className={classes.cardContent}>
             <Typography variant="subtitle1" component="h3">
-              Product Name
+              {data.name}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-                in stock 30
+                in stock {data.stock}
             </Typography>
             <Typography variant="h7" component="h3">
-              Rp 15.000
+              {rupiah(data.price)}
             </Typography>
           </CardContent>
         <CardActions className={classes.cartAction}>
-            <Typography className={classes.cartBtn}>Add to cart</Typography>
+            <Typography className={classes.cartBtn} onClick={handleToCart}>Add to cart</Typography>
         </CardActions>
       </Card>
     )

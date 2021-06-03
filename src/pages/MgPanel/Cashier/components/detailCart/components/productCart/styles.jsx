@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
     },
     minPlus: {
       padding: '0.1rem 0.8rem',
-      background: '#CAD7DE'
+      background: '#CAD7DE',
+      cursor: 'pointer'
     },
     qtyCount: {
       padding: '0.1rem 0.8rem',
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     productName: {
       width: '70%',
       overFlow: 'hidden'
-    }
+    },
 }));
 
 

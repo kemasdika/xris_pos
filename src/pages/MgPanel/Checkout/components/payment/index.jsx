@@ -1,20 +1,36 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Fade from '@material-ui/core/Fade';
 import useStyles from './styles'
 import { Button, Divider, Paper, TextField, Typography } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import SummaryCart from './../../../Cashier/components/detailCart/components/summaryCart'
 import cashImg from './../../../../../assets/images/cashImg.PNG'
+import {customerCash} from './../../../../../controllers/_actions/PaymentAction'
+import {useDispatch, useSelector} from 'react-redux'
 export default function Payment({open,close,openResult}) {
+    const {totalAmount} = useSelector((state) => state.cart)
     const classes = useStyles()
+    const dispatch = useDispatch()
+    const [amount,setAmount] = useState(0)
+    const [error, setError] = useState('')
     const handlePayment = (e) => {
         e.preventDefault()
-        openResult(true);
-        close(false)
+        if(amount < totalAmount) {
+            setError('amount is less than totalAmount')
+        }else {
+            openResult(true);
+            dispatch(customerCash(amount))
+            close(false)
+        }
     }
     const handleClose = () => {
         close(false)
     }
+    const handleChange = (e) => {
+        console.log(e.target.value)
+        setAmount(e.target.value)
+    }
+    
     return (
         <div>
 
@@ -39,7 +55,11 @@ export default function Payment({open,close,openResult}) {
                 <div className={classes.customDevider}></div>
                 <form onSubmit={handlePayment}>
                     <Typography className={classes.customText2}>Cash Amount</Typography>
-                    <TextField size='small' id="outlined-basic" className={classes.customInput} variant="outlined"></TextField>
+                    <TextField type='number' size='small' id="outlined-basic" onChange={handleChange} className={classes.customInput} variant="outlined"></TextField>
+                    {
+                        error !== '' ?
+                        <Typography color="error">{error}</Typography> : ''
+                    }
                     <Button className={classes.customButton} type='submit'>Pay</Button>
                 </form>
             </Paper>

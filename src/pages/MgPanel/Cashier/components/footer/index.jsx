@@ -7,10 +7,12 @@ import DetailCart from './../detailCart'
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import {useHistory} from 'react-router-dom'
-
+import {useSelector} from 'react-redux'
+import {rupiah} from './../../../../../helpers/rupiahConverter'
 export default function Footer() {
     const classes = useStyles()
     const history = useHistory()
+    const {totalPrice, cartsCount} = useSelector((state) => state.cart)
     const [state, setState] = React.useState({
         right: false,
       });
@@ -40,7 +42,7 @@ export default function Footer() {
                 </div>
                 <div className={classes.customerVoucher}>
                     <Typography className={classes.customText} >SELECT VOUCHER</Typography>
-                    <Typography className={classes.customText4}>5 VOUCHER</Typography>
+                    <Typography className={classes.customText4}>0 VOUCHER</Typography>
                 </div>
             </div>
             <div className={classes.cartSection} >
@@ -49,8 +51,8 @@ export default function Footer() {
                     <div className={classes.cartSection}>
                         <ShoppingCartIcon className={classes.cartIcon}/>
                         <div className={classes.itemPrice}>
-                            <Typography className={classes.customText5}>Total Item (s) 5</Typography>
-                            <Typography className={classes.customText5}>75.000,-</Typography>
+                            <Typography className={classes.customText5}>Total Item (s) {cartsCount}</Typography>
+                            <Typography className={classes.customText5}>{rupiah(totalPrice)}</Typography>
                         </div>
                     </div>
                 </div>

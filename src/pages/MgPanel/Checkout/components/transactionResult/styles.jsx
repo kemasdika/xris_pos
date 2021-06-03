@@ -26,13 +26,25 @@ headerPayment: {
     width: '50%'
   },
   customText1: {
-    fontWeight: '700',
-    color: '#00B449'
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    '& > *': {
+      fontWeight: '500',
+      fontSize: '15px',
+      color: '#3A4958',
+      marginBottom: '1rem'
+      }
   },
   customText2: {
-    fontWeight: '700',
-    color: '#3A4958',
-    fontSize: '14px'
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    '& > *': {
+      fontWeight: '700',
+      fontSize: '20px',
+      marginBottom: '1rem'
+    }
   },
   paymentMethod: {
     display: 'flex',

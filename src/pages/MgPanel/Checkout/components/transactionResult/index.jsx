@@ -4,18 +4,38 @@ import useStyles from './styles'
 import { Button, Divider, Paper, TextField, Typography } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import SummaryCart from './../../../Cashier/components/detailCart/components/summaryCart'
-import cashImg from './../../../../../assets/images/cashImg.PNG'
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-
+import {rupiah} from './../../../../../helpers/rupiahConverter'
+import {removeCart} from './../../../../../controllers/_actions/CartAction'
+import {useSelector,useDispatch} from 'react-redux'
+import {useHistory} from 'react-router-dom'
 export default function TransactionResult({openResult,closeResult}) {
+    const {customerCash} = useSelector((state) => state.payment)
+    const {totalAmount, carts} = useSelector((state) => state.cart)
+    const history = useHistory()
+    const dispatch = useDispatch()
+    const change = customerCash - totalAmount
     const classes = useStyles()
-    const handleResult = (e) => {
-        e.preventDefault()
-        closeResult(false)
+    const handleResult = async() => {
+        try{
+            await carts.map((list) => {
+                dispatch(removeCart(list.id))
+            })
+            history.push('/cashier')
+            closeResult(false)
+        } catch(err) {
+            console.log(err)
+        }
     }
-    const handleClose = () => {
-        closeResult(false)
+    const handleClose = async() => {
+        try{
+            await carts.map((list) => {
+                dispatch(removeCart(list.id))
+            })
+            history.push('/cashier')
+            closeResult(false)
+        } catch(err) {
+            console.log(err)
+        }
     }
     return (
         <Fade in={openResult}>
@@ -27,7 +47,15 @@ export default function TransactionResult({openResult,closeResult}) {
                 <Typography className={classes.customText}>Payment Summary</Typography>
                 <Divider></Divider>
                 <SummaryCart></SummaryCart>
-                <div className={classes.customDevider}></div>
+                <Divider></Divider>
+                <div className={classes.customText1}>
+                    <Typography>Cash Amount</Typography>
+                    <Typography>{rupiah(customerCash)}</Typography>
+                </div>
+                <div className={classes.customText2}>
+                    <Typography>Change</Typography>
+                    <Typography>{rupiah(change)}</Typography>
+                </div>
                 <Button className={classes.customButton} onClick={handleResult}>Done</Button>
             </Paper>
         </Fade>
