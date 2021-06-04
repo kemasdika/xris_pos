@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Header from '../../../components/Header/Header'
 import Footer from './components/footer'
 import Categories from './components/categories'
@@ -9,9 +9,14 @@ import {fetchProduct} from './../../../controllers/_actions/ProductAction'
 import {fetchCart,minusCart} from './../../../controllers/_actions/CartAction'
 import './style.css'
 // import productImg from './../../../assets/images/product.PNG'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 export default function Cashier() {
     const classes = useStyles()
+    const [search, setSearch] = useState('')
+    const {products} = useSelector((state) => state.product)
+    const filterProduct = products.filter( product => {
+        return product.name.toLowerCase().includes(search.toLowerCase())
+    })    
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchProduct())
@@ -24,10 +29,10 @@ export default function Cashier() {
             <Header/>
             <div className={classes.category}>
                 <Categories/>
-                <SearchBarcode/>
+                <SearchBarcode setSearch={setSearch}/>
             </div>
             <div className={`product`}>
-                <ListProduct/>
+                <ListProduct data={filterProduct}/>
             </div>
             <Footer/>
         </div>

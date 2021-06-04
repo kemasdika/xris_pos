@@ -1,0 +1,5 @@
+-bikin validasi page,
+-bikin validasi di chekcout,
+-bikin modal vocher,
+-bikin modal yang triger camera
+-bikin functional logout

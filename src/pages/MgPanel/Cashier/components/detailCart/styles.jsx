@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
     },
     fullList: {
       width: 'auto',
+      justifyContent: 'space-between'
     },
     customText: {
       fontSize: '1rem',
@@ -69,7 +70,14 @@ const useStyles = makeStyles((theme) => ({
     padding: '10px',
     cursor: 'pointer',
     width: '70%'
-    }
+    },
+    // products: {
+    //   height: 400,
+    //   overFlow: 'scroll'
+    // },
+    // summary: {
+    //   backgroundColor: '#ffffff'
+    // }
 }));
 
 

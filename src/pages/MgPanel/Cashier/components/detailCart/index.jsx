@@ -42,7 +42,7 @@ export default function DetailCart({anchor}) {
                 <Typography>Rabu, 27 Mei 2021 | 18:30</Typography>
             </div>
             <Divider variant='fullWidth' className={classes.customDivider}></Divider>
-            <div className={``}>
+            <div className={classes.products}>
                 {
                     carts.map((list, idx)=> (
                         <ProductDetailCart key={idx} data={list}/>
@@ -50,10 +50,12 @@ export default function DetailCart({anchor}) {
                 }
             </div>
             <Divider variant='fullWidth' className={classes.customDivider}></Divider>
-            <SummaryCart/>
-            <div className={classes.orderProduct}>
-                <Typography className={classes.customButton}>Add More</Typography>
-                <Typography className={classes.customButton1} onClick={goToCheckout}>CHECK OUT</Typography>
+            <div className={classes.summary}>
+                <SummaryCart/>
+                <div className={classes.orderProduct}>
+                    <Typography className={classes.customButton}>Add More</Typography>
+                    <Typography className={classes.customButton1} onClick={goToCheckout}>CHECK OUT</Typography>
+                </div>
             </div>
       </div>
     )

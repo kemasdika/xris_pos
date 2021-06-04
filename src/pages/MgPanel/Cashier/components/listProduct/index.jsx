@@ -5,7 +5,7 @@ import CardProduct from './CardProduct'
 import './style.css'
 import { useSelector} from 'react-redux'
 
-export default function ListProduct() {
+export default function ListProduct({data}) {
     const {products} = useSelector((state) => state.product)
     const classes = useStyles()
     console.log(products,'<<<<<<<<<<<<<')
@@ -17,9 +17,9 @@ export default function ListProduct() {
             </div>
             <Grid container spacing={3}>
                 {
-                    products.map((data,idx)=> (
+                    data.map((list,idx)=> (
                         <Grid item md={2} xs={6}>
-                            <CardProduct key={idx} data={data}/>
+                            <CardProduct key={idx} data={list}/>
                         </Grid>
                     ))
                 }
