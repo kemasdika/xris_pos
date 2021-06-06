@@ -7,16 +7,31 @@ import SummaryCart from './../../../Cashier/components/detailCart/components/sum
 import cashImg from './../../../../../assets/images/cashImg.PNG'
 import {customerCash} from './../../../../../controllers/_actions/PaymentAction'
 import {useDispatch, useSelector} from 'react-redux'
+import CustomModal from './../../../../../components/Modal'
+import PaymentMethod from './components/paymentMethod'
 export default function Payment({open,close,openResult}) {
     const {totalAmount} = useSelector((state) => state.cart)
     const classes = useStyles()
     const dispatch = useDispatch()
     const [amount,setAmount] = useState(0)
     const [error, setError] = useState('')
+    const [openPayment, setOpenPayment] = useState(false)
+    const [state, setState] = React.useState({
+        right: false,
+      });
+    
+    const toggleDrawer = (anchor, open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+          return;
+        }
+        setState({ ...state, [anchor]: open });
+      };
     const handlePayment = (e) => {
         e.preventDefault()
-        if(amount < totalAmount) {
-            setError('amount is less than totalAmount')
+        if(amount < totalAmount || amount === 0) {
+            setError('amount is less than total amount')
+        }else if(totalAmount === 0){
+            setError('no item to pay')
         }else {
             openResult(true);
             dispatch(customerCash(amount))
@@ -30,7 +45,9 @@ export default function Payment({open,close,openResult}) {
         console.log(e.target.value)
         setAmount(e.target.value)
     }
-    
+    const handleOpen = () => {
+        setOpenPayment(true)
+    }
     return (
         <div>
 
@@ -45,7 +62,7 @@ export default function Payment({open,close,openResult}) {
                     <div className={classes.paymentMethod}>
                         <img src={cashImg} width='40px' alt="" />
                         <Typography className={classes.customText}>Cash Method</Typography>
-                        <Typography className={classes.customText1} >Other Payment</Typography>
+                        <Typography className={classes.customText1} onClick={handleOpen} >Other Payment</Typography>
                     </div>
                 </div>
                 <div className={classes.customDevider}></div>
@@ -64,6 +81,7 @@ export default function Payment({open,close,openResult}) {
                 </form>
             </Paper>
         </Fade>
+        <CustomModal openModal={openPayment} body={<PaymentMethod open={openPayment} close={close => {setOpenPayment(close)}}/>} />
         </div>
     )
 }

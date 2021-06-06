@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import Divider from '@material-ui/core/Divider';
 import clsx from 'clsx';
 import useStyles from './styles'
@@ -9,12 +9,15 @@ import {useHistory} from 'react-router-dom'
 import {useSelector,useDispatch} from 'react-redux'
 import {fetchCart} from './../../../../../controllers/_actions/CartAction'
 import './style.css'
-export default function DetailCart({anchor}) { 
+import { v4 as uuidv4 } from 'uuid';
+import Clock from './../../../../../components/Clock'
+export default function DetailCart({anchor,close}) { 
     const dispatch = useDispatch()
-    const {carts} = useSelector((state) => state.cart)
+    const [orderId, setOrderId] = useState(uuidv4().slice(0, 8))
+    const {carts, cartsCount} = useSelector((state) => state.cart)
     const classes = useStyles()
     const history = useHistory()
-    const [state, setState] = React.useState({
+    const [state, setState] = useState({
         right: false,
       });
     useEffect(() => {
@@ -30,16 +33,21 @@ export default function DetailCart({anchor}) {
     const goToCheckout = () => {
         history.push('/checkout')
     }
+    const handleClose = () => {
+        close({right:false})
+    }
     return (
         <div className={clsx(classes.list, {
             [classes.fullList]: anchor === 'top' || anchor === 'bottom',
         })} role="presentation" onClick={toggleDrawer(anchor, false)} onKeyDown={toggleDrawer(anchor, false)}
         >
-            <Typography className={classes.customText}>CURRENT ORDER (4)</Typography>
+            <Typography className={classes.customText}>CURRENT ORDER ({cartsCount})</Typography>
             <Divider variant='fullWidth' className={classes.customDivider}></Divider>
             <div className={classes.orderIdSection}>
-                <Typography>Order ID #123123</Typography>
-                <Typography>Rabu, 27 Mei 2021 | 18:30</Typography>
+                <Typography>Order ID #{orderId}</Typography>
+                <Typography>
+                    <Clock/>
+                </Typography>
             </div>
             <Divider variant='fullWidth' className={classes.customDivider}></Divider>
             <div className={classes.products}>
@@ -53,7 +61,7 @@ export default function DetailCart({anchor}) {
             <div className={classes.summary}>
                 <SummaryCart/>
                 <div className={classes.orderProduct}>
-                    <Typography className={classes.customButton}>Add More</Typography>
+                    <Typography className={classes.customButton} onClick={handleClose}  >Add More</Typography>
                     <Typography className={classes.customButton1} onClick={goToCheckout}>CHECK OUT</Typography>
                 </div>
             </div>

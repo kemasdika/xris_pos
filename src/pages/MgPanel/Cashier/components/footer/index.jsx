@@ -1,18 +1,20 @@
 import { Typography } from '@material-ui/core'
-import React from 'react'
+import React,{useState} from 'react'
 import useStyles from './sytles'
 import memberPic from './../../../../../assets/images/member-pic.PNG'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import DetailCart from './../detailCart'
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import {useHistory} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import {rupiah} from './../../../../../helpers/rupiahConverter'
+import CustomModal from './../../../../../components/Modal'
+import Voucher from '../voucher'
 export default function Footer() {
     const classes = useStyles()
     const history = useHistory()
     const {totalPrice, cartsCount} = useSelector((state) => state.cart)
+    const [open, setOpen] = useState(false)
     const [state, setState] = React.useState({
         right: false,
       });
@@ -25,6 +27,9 @@ export default function Footer() {
       };
     const onChekout = () => {
         history.push('/checkout')
+    }
+    const handleOpen = () => {
+        setOpen(true)
     }
     return (
         <div className={classes.root}>
@@ -42,7 +47,7 @@ export default function Footer() {
                 </div>
                 <div className={classes.customerVoucher}>
                     <Typography className={classes.customText} >SELECT VOUCHER</Typography>
-                    <Typography className={classes.customText4}>0 VOUCHER</Typography>
+                    <Typography className={classes.customText4} onClick={handleOpen}>0 VOUCHER</Typography>
                 </div>
             </div>
             <div className={classes.cartSection} >
@@ -59,11 +64,12 @@ export default function Footer() {
                 <div className={classes.checkoutInfo}>
                     <Typography onClick={toggleDrawer('right', true)} className={classes.customButton}>See Detail</Typography>
                     <Drawer anchor={'right'} open={state['right']} onClose={toggleDrawer('right', false)}>
-                        {DetailCart('right')}
+                        <DetailCart anchor={'right'} close={close => {setState(close)}}/>
                     </Drawer>
                     <Typography className={classes.customButton1} onClick={onChekout}>CHECK OUT</Typography>
                 </div>
-            </div>
+            </div>  
+            <CustomModal openModal={open} body={<Voucher open={open} close={close => {setOpen(close)}}/>} />
         </div>
     )
 }

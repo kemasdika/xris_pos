@@ -12,7 +12,6 @@ export default function Categories() {
         {name: 'Stationary'},
         {name: 'FrozenFood'},
         {name: 'Health'},
-        {name: 'Computer'},
         {name: 'Accesories'},
         {name: 'Clothes'},
         {name: 'KitchenSet'},

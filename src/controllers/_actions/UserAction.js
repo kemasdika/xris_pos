@@ -35,10 +35,15 @@ export const login = (input) => {
                         title: 'Oops...',
                         text: err.response.data.message
                       })
-                      console.log(err)
+                      dispatch ({
+                        type: 'ERROR',
+                    })
                     console.log(err)
                 })
         } catch (error) {
+            dispatch ({
+                type: 'ERROR',
+            })
             console.log(error)
         }
     }

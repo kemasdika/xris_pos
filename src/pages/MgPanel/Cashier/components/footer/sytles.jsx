@@ -59,7 +59,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    marginLeft: '1rem'
+    marginLeft: '1rem',
+    cursor: 'pointer'
   },
   cartSection: {
       display: 'flex',

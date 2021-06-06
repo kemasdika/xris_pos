@@ -27,7 +27,8 @@ headerPayment: {
   },
   customText1: {
     fontWeight: '700',
-    color: '#00B449'
+    color: '#00B449',
+    cursor: 'pointer'
   },
   customText2: {
     fontWeight: '700',

@@ -9,12 +9,13 @@ import { TextField, Typography } from '@material-ui/core';
 import {useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'
 import {login} from './../../../controllers/_actions/UserAction'
+import Loader from './../../../components/Loading'
 
 export default function SignIn() {
     const dispatch = useDispatch()
     const history = useHistory()
     const classes = useStyles()
-    const {isLogin} = useSelector((state) => state.user)
+    const {isLogin, isLoading} = useSelector((state) => state.user)
     const [state, setState] = useState({
         username: "",
         password: ""
@@ -44,6 +45,7 @@ export default function SignIn() {
 
     return (
         <div>
+            {isLoading &&<Loader></Loader>}
              <div className={classes.root}>
                 <Card className={classes.card}>  
                     <div className={classes.cardContent}>

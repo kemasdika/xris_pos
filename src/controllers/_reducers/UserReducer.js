@@ -14,6 +14,10 @@ const initialState = {
                return {
                 ...state, isLoading:false, isLogin: true
                }
+            case "ERROR":
+                return {
+                 ...state, isLoading:false
+                }
            default:
                return state
        }
