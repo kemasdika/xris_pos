@@ -1,6 +1,6 @@
 
 // import { authHeader } from '../_helpers'
-import axios from './../../config'
+import axios from '../../config'
 
 export const productService = {
     getAll
