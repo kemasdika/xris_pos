@@ -18,6 +18,15 @@ const useStyles = makeStyles((theme) => ({
         cursor: 'pointer',
         
       },
+      cartBtn1: {
+        textAlign: 'center',
+        width: '100%',
+        color: 'gray',
+        fontWeight: '700',
+        fontSize: '13px',
+        cursor: 'pointer',
+        
+      },
       cartAction: {
         background: '#D43F40',
         padding: '7px',
@@ -26,7 +35,16 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: '#C1100E',
             borderColor: '#0062cc',
           }
-    }
+    },
+    cartAction1: {
+      background: '#DDDDDD',
+      padding: '7px',
+      marginTop: '5px',
+      '&:hover': {
+          backgroundColor: '#DEDEDE',
+          borderColor: '#0062cc',
+        }
+  }
 }));
 
 

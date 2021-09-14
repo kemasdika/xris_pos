@@ -44,7 +44,8 @@ const useStyles = makeStyles((theme) => ({
   },
   customText3: {
     fontSize: '15px',
-    color: '#317BC6'
+    color: '#317BC6',
+    cursor:'pointer'
   },
   customText4: {
     fontSize: '15px',

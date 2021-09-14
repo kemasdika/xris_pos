@@ -10,3 +10,15 @@ export const customerCash = (amount) => {
         }
     }
 }
+
+export const transaction = () => {
+    return async (dispatch) => {
+        try {
+            dispatch({
+                type:'TRANSACTION'
+            })
+        } catch (err) {
+          console.log(err)
+        }
+    }
+}

@@ -1,0 +1,33 @@
+[
+    {
+        "id": 1,
+        "image_url": "https://eigeradventure.com/media/catalog/product/cache/4f33418a30da1d50c37d8b95a2cfab0e/9/1/910006033001.1_2.jpg",
+        "name": "LEG PACK SCORIA 7.1 2A",
+        "price": 269000,
+        "stock": 3
+    },{
+        "id": 2,
+        "image_url": "https://eigeradventure.com/media/catalog/product/cache/4f33418a30da1d50c37d8b95a2cfab0e/9/1/910006025.BLK.1.jpg",
+        "name": "R.LT.14\" DIGI VAULT 1A",
+        "price": 599000,
+        "stock": 0
+    },{
+        "id": 3,
+        "image_url": "https://eigeradventure.com/media/catalog/product/cache/4f33418a30da1d50c37d8b95a2cfab0e/9/1/910006529.DGR.1_1.jpg",
+        "name": "EIGER BARDENAS 1.0 SOCK",
+        "price": 59000,
+        "stock": 2
+    },{
+        "id": 4,
+        "image_url": "https://eigeradventure.com/media/catalog/product/cache/4f33418a30da1d50c37d8b95a2cfab0e/9/1/9100006601.BLK.1.jpg",
+        "name": "EIGER FLECKEN LONG WALLET WS",
+        "price": 109000,
+        "stock": 5
+    },{
+        "id": 6,
+        "image_url": "https://eigeradventure.com/media/catalog/product/cache/4f33418a30da1d50c37d8b95a2cfab0e/9/1/910005439.PUR1_1.jpg",
+        "name": "EIGER CLEEVE WATCHES",
+        "price": 429000,
+        "stock": 0
+    }
+]

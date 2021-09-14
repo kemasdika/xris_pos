@@ -35,9 +35,15 @@ export default function CardProduct({data}) {
               {rupiah(data.price)}
             </Typography>
           </CardContent>
-        <CardActions className={classes.cartAction}>
-            <Typography className={classes.cartBtn} onClick={handleToCart}>Add to cart</Typography>
-        </CardActions>
+          {
+            data.stock <= 0 ?
+            <CardActions className={classes.cartAction1}>
+                <Typography className={classes.cartBtn1}>Out Of Stock</Typography>
+            </CardActions> :
+            <CardActions className={classes.cartAction}>
+                <Typography className={classes.cartBtn} onClick={handleToCart}>Add to cart</Typography>
+            </CardActions>
+          }
       </Card>
     )
 }

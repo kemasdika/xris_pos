@@ -28,7 +28,6 @@ export const fetchCart = () =>{
 }
 
 export const addToCart = (productId) =>{
-  console.log(productId)
     return async (dispatch) => {
         try {
         axios({
@@ -97,6 +96,19 @@ export const totalAmount = (amount) =>{
         dispatch({
           type: 'TOTAL_AMOUNT',
           payload: amount
+        })
+      } catch (err) {
+        console.log(err)
+      }
+  }
+}
+
+export const newCart = (cart) =>{
+  return async (dispatch) => {
+      try {
+        dispatch({
+          type: 'NEW_CART',
+          payload: cart
         })
       } catch (err) {
         console.log(err)

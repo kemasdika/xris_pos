@@ -8,6 +8,7 @@ import {rupiah} from './../../../../../helpers/rupiahConverter'
 import {removeCart} from './../../../../../controllers/_actions/CartAction'
 import {useSelector,useDispatch} from 'react-redux'
 import {useHistory} from 'react-router-dom'
+import Swal from 'sweetalert2'
 export default function TransactionResult({openResult,closeResult}) {
     const {customerCash} = useSelector((state) => state.payment)
     const {totalAmount, carts} = useSelector((state) => state.cart)
@@ -15,17 +16,6 @@ export default function TransactionResult({openResult,closeResult}) {
     const dispatch = useDispatch()
     const change = customerCash - totalAmount
     const classes = useStyles()
-    const handleResult = async() => {
-        try{
-            await carts.map((list) => {
-                dispatch(removeCart(list.id))
-            })
-            history.push('/cashier')
-            closeResult(false)
-        } catch(err) {
-            console.log(err)
-        }
-    }
     const handleClose = async() => {
         try{
             await carts.map((list) => {
@@ -33,6 +23,11 @@ export default function TransactionResult({openResult,closeResult}) {
             })
             history.push('/cashier')
             closeResult(false)
+            Swal.fire({
+                icon: 'success',
+                title: 'Transaction Success',
+                text: 'Welcome to XRIS POS'
+            })
         } catch(err) {
             console.log(err)
         }
@@ -56,7 +51,7 @@ export default function TransactionResult({openResult,closeResult}) {
                     <Typography>Change</Typography>
                     <Typography>{rupiah(change)}</Typography>
                 </div>
-                <Button className={classes.customButton} onClick={handleResult}>Done</Button>
+                <Button className={classes.customButton} onClick={handleClose}>Done</Button>
             </Paper>
         </Fade>
     )

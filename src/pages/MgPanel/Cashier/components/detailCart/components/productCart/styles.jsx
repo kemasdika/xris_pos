@@ -32,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
       width: '70%',
       overFlow: 'hidden'
     },
+    sumQty: {
+      whiteSpace: 'nowrap'
+    }
 }));
 
 

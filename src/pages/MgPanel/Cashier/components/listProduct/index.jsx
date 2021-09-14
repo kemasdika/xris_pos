@@ -1,12 +1,17 @@
 import { Button, Grid, Typography } from '@material-ui/core'
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import useStyles from './styles'
 import CardProduct from './CardProduct'
 import './style.css'
 import { useSelector} from 'react-redux'
+import {useProduct} from './../../../../../hooks'
+import listNewProduct from './../../../../../config/collection/product.json'
 
 export default function ListProduct({data}) {
-    const {products} = useSelector((state) => state.product)
+    // const {products} = useSelector((state) => state.product)
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [products, setProducts] = useProduct(setIsLoading, setError)
     const classes = useStyles()
     console.log(products,'<<<<<<<<<<<<<')
     return (

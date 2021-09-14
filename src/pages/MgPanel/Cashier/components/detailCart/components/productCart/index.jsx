@@ -32,7 +32,7 @@ export default function ProductDetailCart({data}) {
                         <Typography className={classes.qtyCount}>{data.quantity}</Typography>
                         <Typography className={classes.minPlus}  onClick={plusCart}>+</Typography>
                     </div>
-                    <Typography>{rupiah(sumQty)}</Typography>
+                    <Typography className={classes.sumQty}>{rupiah(sumQty)}</Typography>
                 </div>
             </div>
             <Divider/>

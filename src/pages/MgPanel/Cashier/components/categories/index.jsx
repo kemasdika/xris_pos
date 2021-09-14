@@ -6,15 +6,13 @@ import './style.css'
 export default function Categories() {
     const classes = useStyles()
     const categoryList = [
-        {name: 'Allitems'},
-        {name: 'InstantFood'},
-        {name: 'Beverage'},
-        {name: 'Stationary'},
-        {name: 'FrozenFood'},
-        {name: 'Health'},
-        {name: 'Accesories'},
-        {name: 'Clothes'},
-        {name: 'KitchenSet'},
+        {"name": "ALL"},
+        {"name": "MEN"},
+        {"name": "WOMEN"},
+        {"name": "KIDS"},
+        {"name": "EQUIPMENT"},
+        {"name": "OUTLIVE"},
+        {"name": "COLLECTION"},
     ]
     return (
         <div className={'root'}>

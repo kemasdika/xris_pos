@@ -1,6 +1,7 @@
 const initialState = {
     customerCash:0,
-    isLoading: false
+    isLoading: false,
+    transaction: false
    }
    
    export const PaymentReducer = (state = initialState, action) => {
@@ -15,6 +16,11 @@ const initialState = {
                    ...state, customerCash:action.payload,
                    isLoading:false
                }
+            case "TRANSACTION":
+                return {
+                    ...state, transaction:true,
+                    isLoading:false
+                }
            default:
                return state
        }

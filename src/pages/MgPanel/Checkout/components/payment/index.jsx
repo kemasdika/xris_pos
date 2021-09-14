@@ -5,7 +5,7 @@ import { Button, Divider, Paper, TextField, Typography } from '@material-ui/core
 import CloseIcon from '@material-ui/icons/Close';
 import SummaryCart from './../../../Cashier/components/detailCart/components/summaryCart'
 import cashImg from './../../../../../assets/images/cashImg.PNG'
-import {customerCash} from './../../../../../controllers/_actions/PaymentAction'
+import {customerCash, transaction} from './../../../../../controllers/_actions/PaymentAction'
 import {useDispatch, useSelector} from 'react-redux'
 import CustomModal from './../../../../../components/Modal'
 import PaymentMethod from './components/paymentMethod'
@@ -35,6 +35,7 @@ export default function Payment({open,close,openResult}) {
         }else {
             openResult(true);
             dispatch(customerCash(amount))
+            dispatch(transaction())
             close(false)
         }
     }

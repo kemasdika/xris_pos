@@ -22,7 +22,6 @@ export const login = (input) => {
                     })
                     Swal.fire({
                         icon: 'success',
-                        title: `Hi ${input.username} !`,
                         text: 'Welcome to XRIS POS'
                     })
                     dispatch ({
